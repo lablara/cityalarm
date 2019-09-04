@@ -15,5 +15,5 @@ The EDU also employs the TM1637 module, which requires two additional libraries 
 pip3 install wiringpi
 
 
-
+curl -kL dexterindustries.com/update_grovepi | bash
 pip3 install grovepi
