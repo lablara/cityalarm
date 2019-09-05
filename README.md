@@ -16,4 +16,7 @@ pip3 install wiringpi
 
 
 curl -kL dexterindustries.com/update_grovepi | bash
-pip3 install grovepi
+
+Links for grovepi installation
+Links to allow gps to operate
+
