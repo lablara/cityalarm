@@ -13,7 +13,10 @@ The EDU is implemented in Python around the GrovePi+. However, other interfaces 
 The EDU also employs the TM1637 module, which requires two additional libraries that can be installed through the following commands: 
 
 pip3 install numpy
+
 pip3 install haversine
+
+pip3 install paho-mqtt
 
 
 
