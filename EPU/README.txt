@@ -7,8 +7,8 @@ fe = 0.4
 fr = 0.3
 ft = 0.3
 
-Medium in Gaussian = 12
-Standard deviation in Gaussian = 6
+Medium in the Gaussian function = 12
+Standard deviation in the Gaussian function = 6
 
 Three Risk Zones as default values (la, lo, radius(km), rz)
 definedRZ = [[41.179220,-8.597667,50,70], \
