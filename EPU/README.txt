@@ -15,7 +15,7 @@ definedRZ = [[41.179220,-8.597667,50,70], \
              [41.185324,-8.696129,20,50], \
              [41.129798,-8.607621,30,90]]
 
-It may receive three different parameters as command-line arguments:
+The EPU may receive three different parameters as command-line arguments:
 -d debug (True or False)
 -e idEPU (the numerical id of EPU)
 -i ipBroker (the IP address of the MQTT Broker - default port is considered)
