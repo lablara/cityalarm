@@ -12,7 +12,7 @@
 # Basic modules
 import atexit
 import socket
-from _thread import *
+import threading
 import json
 import datetime
 import haversine
@@ -62,6 +62,61 @@ definedRZ = [[41.179220,-8.597667,50,70], \
                  [41.185324,-8.696129,20,50], \
                 [41.129798,-8.607621,30,90]]
 
+
+##############################################################################
+
+## Receive ER from a EDU
+class receiveERThread(threading.Thread):
+	global idEA
+
+	def __init__(self):
+		threading.Thread.__init__(self)
+	
+	def run(self,c, address): 
+	    ## The ER that will be received
+		er = None
+
+		received = c.recv(1024).decode('utf-8')
+    	
+		# Reconstructing the ER from the JSON format to the object ER
+		try:
+			parsed_data = json.loads(received)
+			er = ER(parsed_data["edu"], parsed_data["id"],parsed_data["timestamp"],parsed_data["gps"]["la"],parsed_data["gps"]["lo"])
+			events = parsed_data["events"]
+	        
+			for e in events:
+				er.putEvent (e)
+			print ("Received ER from EDU:", parsed_data["edu"])
+	        
+			if debug:
+				er.printTypes()
+    	
+		except:
+			print ("Error when processing received ER.")
+    	
+		## Generating the EA
+		numberEI = 0
+		if er is not None:
+			ea = EA(idEA, er.getTimestamp(),er.getLatitude(),er.getLongitude())
+			idEA = idEA + 1
+    		
+			for y in er.getEventsTypes():
+				ea.putEvent(y)
+				numberEI = numberEI + 1
+				
+			## Compute the magnitude of the alarm
+			computeSeveryLevel(ea, numberEI)
+
+			if debug:
+				ea.printValues()
+
+			## Transmit the EA - MQQT Protocol
+			transmitEA (ea)
+			
+		else:
+			print ("Error processing ER when computing EA.")
+			
+
 ##############################################################################
 
 def initializeRiskZones():
@@ -79,52 +134,6 @@ def initializeRiskZones():
 
 ##############################################################################
 
-## Receive ER from a EDU
-def receiveER(c, address):
-    global idEA
-
-    ## The ER that will be received
-    er = None
-
-    received = c.recv(1024).decode('utf-8')
-
-    # Reconstructing the ER from the JSON format to the object ER
-    try:
-        parsed_data = json.loads(received)
-        er = ER(parsed_data["edu"], parsed_data["id"],parsed_data["timestamp"],parsed_data["gps"]["la"],parsed_data["gps"]["lo"])
-        events = parsed_data["events"]
-
-        for e in events:
-            er.putEvent (e)
-        print ("Received ER from EDU:", parsed_data["edu"])
-
-        if debug:
-            er.printTypes()
-    except:
-        print ("Error when processing received ER.")
-
-    ## Generating the EA
-    numberEI = 0
-    if er is not None:
-        ea = EA(idEA, er.getTimestamp(),er.getLatitude(),er.getLongitude())
-        idEA = idEA + 1
-        for y in er.getEventsTypes():
-            ea.putEvent(y)
-            numberEI = numberEI + 1
-
-        ## Compute the magnitude of the alarm
-        computeSeveryLevel(ea, numberEI)
-
-        if debug:
-            ea.printValues()
-
-        ## Transmit the EA - MQQT Protocol
-        transmitEA (ea)
-
-    else:
-        print ("Error processing ER when computing EA.")
-
-##############################################################################
 
 def computeSeveryLevel(ea, ni):
     global listRZ, fe, fr, ft, rmax, tmax
@@ -274,7 +283,8 @@ def main(argv):
             print('\nNew EDU connected:', addr[0], ':', addr[1])
 
             # Start a new thread to manage the communication and receive ER from the EDU
-            start_new_thread(receiveER, (c, addr[0]))
+            threadTransmission = receiveERThread()
+            threadTransmission.start (c, addr[0])
 
     except:
         print("EPU is closing due to some connection error...")
