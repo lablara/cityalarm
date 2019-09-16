@@ -8,5 +8,6 @@ fx = 60
 
 It may receive three different parameters as command-line arguments:
 -d debug (True or False)
+-u idEDU (the numerical id of the EDU)
 -i ipEPU (the IP address of the EPU)
 -p portEPU (the TCP port of the EPU)
