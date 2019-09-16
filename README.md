@@ -16,6 +16,7 @@ The EDU is implemented around the GrovePi+ hardware framework. However, other in
 Before using the EDU, some libraries have to be installed through the following commands:
 
 pip3 install numpy
+
 pip3 install haversine
 
 Moreover, the GrovePi+ has to be installed and enabled, as specified by the manufacturer (https://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/)
