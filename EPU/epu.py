@@ -285,8 +285,9 @@ def main(argv):
             # Start a new thread to manage the communication and receive ER from the EDU
             receiveERThread().start (c, addr[0])
 
-    except:
+    except Exception as e:
         print("EPU is closing due to some connection error...")
+	print (e)
         s.shutdown(socket.SHUT_RDWR)
 
     atexit.register(exit_handler)
