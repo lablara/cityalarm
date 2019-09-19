@@ -137,7 +137,9 @@ class sensingThread (threading.Thread):
                 
                 ## In this thread, a new ER is sent only when the current status of detected
                 ## events is chaged
-                if events.getNumberDetectedEI() > 0 and currentEI != events.getNumberDetectedEI():
+                if events.getNumberDetectedEI() == 0:
+                    currentEI = 0
+                elif events.getNumberDetectedEI() > 0 and currentEI != events.getNumberDetectedEI():
                     if debug:
                         print ("A new EI was detected. An ER will be created...")
                     currentEI = events.getNumberDetectedEI()
