@@ -18,8 +18,6 @@ class epuMQTT():
 
         self.clientmqtt = mqtt.Client("")
 
-        print ("MQTT client created!")
-
     def publishEA (self, eaJSON):
 
         print ("Broker address:", self.broker)
