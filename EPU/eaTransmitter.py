@@ -14,7 +14,7 @@ from time import sleep
 class epuMQTT():
     def __init__(self, ipBroker, epuId):
         self.broker = ipBroker
-        self.description = "EPU_CityAlarm_" + str(epuId)
+        self.description = "CityAlarm_EPU" + str(epuId)
 
         self.clientmqtt = mqtt.Client("")
 
