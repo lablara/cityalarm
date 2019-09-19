@@ -337,6 +337,7 @@ def main(argv):
     if debug:
         print("Obtaining GPS position...")
     gps = moduleGPS.groveGPS()    
+    gps.read()
     la = gps.latitude
     lo = gps.longitude
     if debug:
