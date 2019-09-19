@@ -11,18 +11,24 @@ Emergency Alarm Client (EAC)
 
 All codes are written in Python3, using some libraries.
 
+*******************************************************************
+
 The EDU is implemented around the GrovePi+ hardware framework. However, other interfaces for interaction with sensor devices can be used. In fact, the expected functions of EDU are modularized, allowing that other types of sensor devices be easilly inserted.
 
-Before using the EDU, some libraries have to be installed through the following commands:
+The GrovePi+ has to be installed and enabled, as specified by the manufacturer (https://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/)
+
+Before using the EDU, one library has also to be installed through the following command:
 
 pip3 install numpy
 
-pip3 install haversine
-
-Moreover, the GrovePi+ has to be installed and enabled, as specified by the manufacturer (https://www.dexterindustries.com/GrovePi/get-started-with-the-grovepi/)
-
 As a second remark about the EDU and GrovePi+, the GPS module operates through the serial port of Raspberry and thus the Bluetooth module needs to be deactivated in some versions
 
-For the EPU and the EAC, only the paho-mqtt library has to be installed, using the follwing command:
+*******************************************************************
+
+For the EPU, the haversine lib has to be installed:
+
+pip3 install haversine
+
+For the EPU and the EAC, the paho-mqtt library has also to be installed, using the follwing command:
 
 pip3 install paho-mqtt
