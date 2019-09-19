@@ -14,8 +14,8 @@ import re
 ###############
 ## When the GPS can not find signal and retrive current GPS coordinates
 ## Default coordinates for the center of Porto, Portugal
-default_la = 41.1579
-default_lo = -8.6291
+default_la = 0.0
+default_lo = 0.0
 
 ## GPS communication
 patterns=["$GPGGA",
