@@ -18,7 +18,7 @@ import atexit
 debug = True
 ipBroker = "127.0.0.1"
 
-requestEA = "EPU_CityAlarm_1"
+requestEA = "CityAlarm_EPU1"
 
 #Main code of this EAC
 ###############################################################
