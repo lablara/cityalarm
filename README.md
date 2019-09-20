@@ -1,5 +1,5 @@
 # cityalarm
-Implementation of the CityAlarm Emergency Alerting System.
+Implementation of the CityAlarm Emergency Alerting system.
 
 This implementation is in accordance with a scientific paper that describes it. The paper is still under peer-reviewing and will be linked here as soon as it is published.
 
