@@ -1,23 +1,21 @@
 # *********************************************************************
-# This is a simple Emergency Alarm Client (EAC)
-# It only shows the received EA in the JSON format
-# This implementation is based on the CityAlarm paper
+# These are supporting classes for the EAC_Map
 # Author      : Daniel G. Costa
 # E-mail      : danielgcosta@uefs.br
-# Date        : 2019/09/01
+# Date        : 2019/09/10
 # *********************************************************************
 
 import time, datetime
 
-########################################################
+##############################################################################
 
-## Definition of an Emergency Alar
-
+## Implements the idea of a list of Emergency Alarms
 class ListEA:
 
     def __init__(self):
         self.alarms = []
 
+    ## Insert a new EA into the list only if comes from an unreported EDU
     def putAlarm(self, ea, debug):
 
         lat = ea.getLatitude()
@@ -35,24 +33,22 @@ class ListEA:
 
         if control:
             if debug:
-                print ("Inserting new EA...")
+                print ("Inserting new EA into the list...")
             self.alarms.append(ea)
 
-
-    ## Remove very old EA
+    ## Remove old (not refreshed) EA
     def updateAlarms(self, maxTime, debug):
 
         t = datetime.datetime.strptime(time.ctime(), "%a %b %d %H:%M:%S %Y")
-        now = t.timestamp()
+        now = t.timestamp()  # current absolute time (seconds)
 
         for alarm in self.alarms:
             alarmTime = datetime.datetime.strptime(alarm.getTimestamp(), "%a %b %d %H:%M:%S %Y").timestamp()
 
-            if (now - alarmTime) > maxTime:  ## Old EA
+            if (now - alarmTime) > maxTime:  ## Old EA. Remove it
                 self.alarms.remove(alarm)
                 if debug:
                     print ("Removing old EA with id:", alarm.getId())
-
 
     def getAlarms(self):
         return self.alarms
@@ -61,8 +57,9 @@ class ListEA:
         for ea in self.alarms:
            print("Id:", ea.getId(), ": Latitude =", ea.getLatitude(), ": Longitude =", ea.getLongitude(), ": Severity =", ea.getSeverityLevel())
 
-###############################################################
+##############################################################################
 
+## Definition of an Emergency Alarm
 class EA():
     def __init__(self, i, ts, latitude, longitude):
         self.id = i
@@ -104,11 +101,11 @@ class EA():
     def toJSON(self):
         return json.dumps(self,default=lambda o: o.__dict__,sort_keys=True, indent=4)
 
-###############################################################
+##############################################################################
 
 class GPS():
     def __init__(self, latitude, longitude):
         self.la = latitude
         self.lo = longitude
 
-###############################################################
+##############################################################################
