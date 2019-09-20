@@ -32,3 +32,9 @@ pip3 install haversine
 For the EPU and the EAC, the paho-mqtt library has also to be installed, using the follwing command:
 
 pip3 install paho-mqtt
+
+*******************************************************************
+
+If the EAC_Map is employed, the Folium library has to be installed through the following command:
+
+pip3 install paho-mqtt
