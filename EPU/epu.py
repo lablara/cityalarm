@@ -20,7 +20,7 @@ import numpy as np
 import sys, getopt
 
 ## Elements to support the operation of the EDU
-from elementsEPU import ER,RiskZone,EA
+from elementsEPU import ER, RiskZone, EA
 
 ## Supportive module to communicate through MQTT
 from eaTransmitter import epuMQTT
@@ -180,7 +180,7 @@ def computeAssociatedRZ(la,lo):
         distance = haversine.haversine(edu,zone)
 
         if distance < rz.getRadius(): # The EDU is inside the Risk Zone
-            if riskLevel < rz.getRZ(): # Update so the "best" RiskZone is chosen
+            if riskLevel < rz.getRZ(): # Update so the "best" Risk Zone is chosen
                 riskLevel = rz.getRZ()
 
     ## It will be 0 if the EDU is not in a Risk Zone
