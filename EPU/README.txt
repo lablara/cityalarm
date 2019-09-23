@@ -11,9 +11,9 @@ Medium in the Gaussian function = 12
 Standard deviation in the Gaussian function = 6
 
 Three Risk Zones as default values (la, lo, radius(km), rz)
-definedRZ = [[41.179220,-8.597667,50,70], \
-             [41.185324,-8.696129,20,50], \
-             [41.129798,-8.607621,30,90]]
+definedRZ = [[41.179220,-8.597667,5,70], \
+             [41.185324,-8.696129,5,50], \
+             [41.129798,-8.607621,5,100]]
 
 The EPU may receive three different parameters as command-line arguments:
 -d debug (True or False)
