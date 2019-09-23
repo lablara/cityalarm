@@ -58,9 +58,9 @@ ipBroker = "192.168.0.122"
 ## Definitions of the risk zones
 ## The format is [la,lo,radius,risk] - radius in km
 ## Defined locations are FEUP, Matosinhos and Gaia (Porto District, Portugal)
-definedRZ = [[41.179220,-8.597667,50,70], \
-                 [41.185324,-8.696129,20,50], \
-                [41.129798,-8.607621,30,90]]
+definedRZ = [[41.179220,-8.597667,5,70], \
+                 [41.185324,-8.696129,5,50], \
+                [41.129798,-8.607621,5,100]]
 
 
 ##############################################################################
