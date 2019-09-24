@@ -1,6 +1,6 @@
-Emergency Processor Unit
+Emergencies Processing Unit
 
-Default TCP port to receive ER: 55055
+Default TCP port to receive Events Reports: 55055
 
 Dafault values to constants:
 fe = 0.4
