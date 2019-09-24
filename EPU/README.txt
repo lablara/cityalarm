@@ -2,11 +2,10 @@ Emergencies Processing Unit
 
 Default TCP port to receive Events Reports: 55055
 
-Dafault values to constants:
+Dafault values of constants:
 fe = 0.4
 fr = 0.3
 ft = 0.3
-
 Medium in the Gaussian function = 12
 Standard deviation in the Gaussian function = 6
 
