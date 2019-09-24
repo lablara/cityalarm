@@ -3,9 +3,7 @@ Implementation of the CityAlarm Emergency Alerting system
 
 The CityAlarm implementation is divided in three elements:
 
-Events Dectection Unit (EDU)
-Emergencies Processing Unit (EPU)
-Emergency Alarms Client (EAC)
+Events Dectection Unit (EDU), Emergencies Processing Unit (EPU) and Emergency Alarms Client (EAC)
 
 All codes are written in Python3, using some additional libraries
 
