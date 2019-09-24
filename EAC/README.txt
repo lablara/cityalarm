@@ -1,4 +1,4 @@
-Emergency Alarm Client
+Emergency Alarms Client
 
 This is a very simple implementation to only print received Emergency Alarms on the screen
 
