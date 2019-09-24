@@ -1,6 +1,6 @@
-Events Detector Unit
+Events Detection Unit
 
-Default TCP port to send ER: 55055
+Default TCP port to send Events Reports: 55055
 
 This implementation is a reference with the following sensors: temperature, humidity, noise, air quality and water. But any number of sensors can be easily inserted.
 
