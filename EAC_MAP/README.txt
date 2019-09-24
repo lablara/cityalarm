@@ -1,6 +1,6 @@
 Emergency Alarm Client to plot Emergency Alarms on a map
 
-The MQTT topics published by the EPU are in the form of "CityAlarm_EPUu", with u being the numerical id of the EPU
+The MQTT topics subscribed by this EAC are in the form of "CityAlarm_EPUu", with u being the numerical id of the EPU
 
 The EAC may receive three different parameters as command-line arguments:
 -d debug (True or False)
