@@ -1,5 +1,6 @@
 # cityalarm
-Implementation of the CityAlarm Emergency Alerting system
+Implementation of the CityAlarm Emergency Alerting system (and the extension for visual sensing)
+Paper in: https://doi.org/10.3390/s20010170
 
 The CityAlarm implementation is divided in three elements:
 
